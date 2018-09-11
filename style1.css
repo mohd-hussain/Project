@@ -35,7 +35,7 @@ header > nav ul li{
 footer>div{
 	padding: 10px;
 	background-color: #4f4f4f;
-	color: #892bc083;
+	color: lightcoral;
 	font-size: 18pt;
 	text-align: center;
 	/* position: fixed; */
@@ -111,4 +111,34 @@ main .grid1 > div {
     padding: 20px 50px;
     /* margin-top: 30px; */
     display: block;
+}
+
+
+.grid-about{
+    margin: 20px;
+    padding: 10px;
+    border: 2px solid darkblue;
+    font-size: 18px;
+}
+
+.subbtn{
+    margin-left: 10px;
+    text-align: center;
+
+}
+
+.myphoto img{
+	width: 20% 20%;
+	border: 1px solid #000000;
+	border-radius: 50% 50%;
+	border:2px,dotted,black;
+    margin-left: 40%;
+}   
+
+
+main .grid-contact{
+    display: grid;
+    float: left;
+    grid-template-columns: 2fr 8fr;
+    background-color: aqua;
 }
