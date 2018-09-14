@@ -13,7 +13,7 @@ header nav ul {
     margin: 0;
     text-align:center;
 	font-size: 18pt;
-	background-image: url("BlockHeader.png");
+	background-image: url("imgs/BlockHeader.png");
 	width: 100%;
 	/*position: fixed;*/
 	height: 60px;
