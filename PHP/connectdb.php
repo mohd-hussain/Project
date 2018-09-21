@@ -1,26 +1,4 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Your data</title>
-        <style>
-      		table{
-      			border: 2px solid black;
-      			margin-top: 50px;
-                margin-left:50px;  
-      		}
-      		table td{
-      			padding:10px;
-      		}
-      		table tr:nth-child(odd){
-      			background-color:#e1a45f;
-          }
-      		table tr:nth-child(even){
-      			background-color:#8f94a0;
-      		}
-      	</style>
-    </head>
-    <body>
-    
+
 <?php
 require_once 'edit.php';
 if($_POST){
@@ -37,7 +15,7 @@ if($_POST){
             !empty($semail)&&!empty($gender)&&!empty($address)&&
             !empty($dob)&&!empty($state)&&!empty($country)){
 
-     
+                
                 //For Database Connection
 
 $link=mysqli_connect('localhost','root','root','DF');
@@ -54,7 +32,7 @@ $link=mysqli_connect('localhost','root','root','DF');
             echo "<br>".mysqli_error($link);
         }
         else{
-            echo '<br><h4>You are Succesfully Log In.</h4>';
+            echo '<br>You are Succesfully Log In.';
         }
         
         
@@ -67,5 +45,4 @@ else{
     header('Refresh:3, url= ../registration.html');
 }
 ?>
-    </body>
-</html>
+  
