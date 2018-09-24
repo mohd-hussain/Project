@@ -49,7 +49,7 @@ session_start();
     </div>
 
     <div>
-        <div >
+        <div class="abt">
            <table>
                <tr>
                    <td><a href="aboutjava.php">JAVA</a></td>

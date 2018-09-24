@@ -16,7 +16,7 @@ header nav ul {
 	background-image: url("imgs/BlockHeader.png");
 	width: 100%;
 	/*position: fixed;*/
-	height: 60px;
+	height: 50px;
 }
 header > nav ul li > a
 {
@@ -143,5 +143,14 @@ main .grid-contact{
     float: left;
     grid-template-columns: 2fr 8fr;
     background-color: aqua;
+}
+
+.abt table td{
+    width:100%;
+    padding: 8px;
+    margin-left: 0px;
+    text-align: left;
+    
+
 }
 
