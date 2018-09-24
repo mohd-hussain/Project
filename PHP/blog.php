@@ -1,8 +1,5 @@
-
-
 <!Doctype html>
 <?php
-
 session_start();
 ?>
 <html>
@@ -49,7 +46,7 @@ session_start();
     </div>
 
     <div>
-        <div class="abt">
+        <div >
            <table>
                <tr>
                    <td><a href="aboutjava.php">JAVA</a></td>
@@ -79,7 +76,6 @@ session_start();
 	if(isset($_SESSION['uname']))
 	{
 		
-
 		echo "<br>"
 			."<form method='post' action='blog.php'>"
 			."<input type='hidden' name='logout' value='yes'/>"
@@ -89,7 +85,6 @@ session_start();
 		else{
             echo "error";
 			//header("Refresh:5 , url=login.php");
-
 		}?>
         
 </body>
