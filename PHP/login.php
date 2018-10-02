@@ -7,7 +7,7 @@
 				$pass=$_POST['pass'];
 				
                 if(!empty($uname)&&!empty($pass)){
-                    $link=mysqli_connect('localhost','root','root','DF');
+                    $link = mysqli_connect('localhost','root','root','DF');
                       if(!$link){
                            echo '<br>Unable to connect to Database.'
                             .mysqli_connect_error();
@@ -23,7 +23,7 @@
                         header('Refresh:3 , url=../index.html');
                     }
                     else{
-                        header("Refresh:2, url=blog.php");
+                        header("Refresh:0, url=../addtopic.html");
                     }
                 }
                     //   if(!$result){
