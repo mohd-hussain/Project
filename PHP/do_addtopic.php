@@ -15,7 +15,7 @@
                 }
                
             //create and issue the first query
-            $add_topic = "insert into forum_topics values ('1', '$topic_title',
+            $add_topic = "insert into forum_topics values ('', '$topic_title',
                 now(), '$topic_owner')";
             $result1=mysqli_query($conn,$add_topic);
             
@@ -29,12 +29,12 @@
         
             
             //get the id of the last query 
-            $topic_id = mysql_insert_id($conn);
-            
+            $topic_id = mysqlis_insert_id($conn);
+            echo 'hello';
             //create and issue the second querys
             $add_post = "insert into forum_posts values ('', '$topic_id',
                 '$_post_text', now(), '$topic_owner')";
-            $result2=mysql_query($conn,$add_post); 
+            $result2=mysqli_query($conn,$add_post); 
             if(!$result2){
                 echo "<br>".mysqli_error($conn);
             }
