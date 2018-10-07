@@ -8,13 +8,13 @@
        die('I am exiting');
        }
    
-   
+     
    //gather the topics
    $get_topics = "select topic_id, topic_title,
    date_format(topic_create_time, '%b %e %Y at %r') as fmt_topic_create_time,
   topic_owner from forum_topics order by topic_create_time desc";
-  
-  $get_topics_res = mysql_query($conn,$get_topics);
+ 
+  $get_topics_res = mysqli_query($conn,$get_topics);
   echo 'hello';
   if (mysqli_num_rows($get_topics_res) < 1) {
      //there are no topics, so say so
@@ -22,7 +22,7 @@
   } else {
      //create the display string
      $display_block = "
-     <table cellpadding=3 cellspacing=1 border=1>
+     <table  border=1>
      <tr>
      <th>TOPIC TITLE</th>
      <th># of POSTS</th>
@@ -37,7 +37,7 @@
          //get number of posts
          $get_num_posts = "select count(post_id) from forum_posts
               where topic_id = $topic_id";
-         $get_num_posts_res = mysqli_query($get_num_posts,$conn)
+         $get_num_posts_res = mysqli_query($conn,$get_num_posts)
               or die(mysqli_error());
          $num_posts = mysqli_result($get_num_posts_res,0,'count(post_id)');
   
@@ -62,6 +62,6 @@
    <body>
   <h1>Topics in My Forum</h1>
   <?php print $display_block; ?>
-  <P>Would you like to <a href="addtopic.html">add a topic</a>?</p>
+  <P>Would you like to <a href="../addtopic.html">add a topic</a>?</p>
 </body>
 </html>

@@ -1,7 +1,7 @@
 <?php
    //check for required info from the query string
    if (!$_GET[topic_id]) {
-      header("Location: topiclist.php");
+      header('Refresh:2, url=topiclist.php');
       exit;
    }
    
@@ -41,7 +41,7 @@
      $display_block = "
      <P>Showing posts for the <strong>$topic_title</strong> topic:</p>
   
-     <table width=100% cellpadding=3 cellspacing=1 border=1>
+     <table width=100%  border=1>
      <tr>
      <th>AUTHOR</th>
      <th>POST</th>
