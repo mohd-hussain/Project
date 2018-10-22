@@ -1,11 +1,12 @@
 <?php
+ini_set('display_errors',1); error_reporting(E_ALL);
    //connect to server and select database
    $conn = mysqli_connect('localhost','root','root','DF');
           
    if(!$conn){
        echo '<br>Unable to connect to Database.'
        .mysqli_connect_error();
-       die('I am exiting');
+       die('mysqli_error()');
        }
    
      
@@ -15,8 +16,8 @@
   topic_owner from forum_topics order by topic_create_time desc";
  
   $get_topics_res = mysqli_query($conn,$get_topics);
-  echo 'hello';
-  if (mysqli_num_rows($get_topics_res) < 1) {
+  echo 'Hello';
+  if (mysqli_num_rows($get_topics_res < 1)) {
      //there are no topics, so say so
      $display_block = "<P><em>No topics exist.</em></p>";
   } else {
@@ -42,18 +43,26 @@
          $num_posts = mysqli_result($get_num_posts_res,0,'count(post_id)');
   
          //add to display
-         $display_block .= "
-         <tr>
+       $display_block .= "
+         <tr> 
          <td><a href=\"showtopic.php?topic_id=$topic_id\">
          <strong>$topic_title</strong></a><br>
          Created on $topic_create_time by $topic_owner</td>
          <td align=center>$num_posts</td>
          </tr>";
-     }
-  
+     
+      }
      //close up the table
-     $display_block .= "</table>";
+     $display_block .= "</table>";    
+     /*  while ($row = mysql_fetch_array($num_posts)) {
+      echo '<tr>';
+      foreach($row as $field) {
+          echo '<td>' . htmlspecialchars($field) . '</td>';
+      }
+      echo '</tr>';
   }
+  }*/
+}
 ?>
 <html>
   <head>
