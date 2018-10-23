@@ -1,3 +1,56 @@
+<style>
+body{
+  background:lightyellow;
+}
+table{
+  /* background:red; */
+  /* border:1px solid black; */
+  border-collapse:collapse;
+  position:relative;
+  left:50%;
+  top:100px;
+  width:700px;
+  box-shadow: 0 0 5px 1px gray;
+  background:white;
+  /* border-radius:20px; */
+  /* bottom:50%; */
+  transform:translateX(-50%);
+}
+table td,th{
+  border: 1px solid black;
+  padding:10px;
+}
+td:nth-child(1),td:nth-child(2){
+  animation:HS 2s ease-in-out 0s;
+}
+td:nth-child(4){
+  animation:RS 2s ease-in-out 0s;
+
+}
+
+@keyframes HS{
+  0%{
+    opacity:0;
+    transform:translateX(-300px);
+  }
+  100%{
+    opacity:1;
+    transform:translateX(0px);
+  }
+}
+@keyframes RS{
+  0%{
+    opacity:0;
+    transform:translateX(300px);
+  }
+  100%{
+    opacity:1;
+    transform:translateX(0px);
+  }
+}
+
+  </style>
+
 <?php
 ini_set('display_errors',1); error_reporting(E_ALL);
    //connect to server and select database
@@ -8,69 +61,49 @@ ini_set('display_errors',1); error_reporting(E_ALL);
        .mysqli_connect_error();
        die('mysqli_error()');
        }
-   
-     
-   //gather the topics
-   $get_topics = "select topic_id, topic_title,
-   date_format(topic_create_time, '%b %e %Y at %r') as fmt_topic_create_time,
-  topic_owner from forum_topics order by topic_create_time desc";
- 
-  $get_topics_res = mysqli_query($conn,$get_topics);
-  echo 'Hello';
-  if (mysqli_num_rows($get_topics_res < 1)) {
-     //there are no topics, so say so
-     $display_block = "<P><em>No topics exist.</em></p>";
-  } else {
-     //create the display string
-     $display_block = "
-     <table  border=1>
-     <tr>
-     <th>TOPIC TITLE</th>
-     <th># of POSTS</th>
-     </tr>";
-  
-      while ($topic_info = mysqli_fetch_array($get_topics_res)) {
-         $topic_id = $topic_info['topic_id'];
-         $topic_title = stripslashes($topic_info['topic_title']);
-         $topic_create_time = $topic_info['fmt_topic_create_time'];
-         $topic_owner = stripslashes($topic_info['topic_owner']);
-  
-         //get number of posts
-         $get_num_posts = "select count(post_id) from forum_posts
-              where topic_id = $topic_id";
-         $get_num_posts_res = mysqli_query($conn,$get_num_posts)
-              or die(mysqli_error());
-         $num_posts = mysqli_result($get_num_posts_res,0,'count(post_id)');
-  
-         //add to display
-       $display_block .= "
-         <tr> 
-         <td><a href=\"showtopic.php?topic_id=$topic_id\">
-         <strong>$topic_title</strong></a><br>
-         Created on $topic_create_time by $topic_owner</td>
-         <td align=center>$num_posts</td>
-         </tr>";
-     
-      }
-     //close up the table
-     $display_block .= "</table>";    
-     /*  while ($row = mysql_fetch_array($num_posts)) {
-      echo '<tr>';
-      foreach($row as $field) {
-          echo '<td>' . htmlspecialchars($field) . '</td>';
-      }
-      echo '</tr>';
-  }
-  }*/
-}
+
+    else{
+      // echo "connection successfull";
+    }
+
+    $sql = "Select * from forum_topics";
+    $result = $conn->query($sql);
 ?>
-<html>
-  <head>
-  <title>Topics in My Forum</title>
-  </head> 
-   <body>
-  <h1>Topics in My Forum</h1>
-  <?php print $display_block; ?>
-  <P>Would you like to <a href="../addtopic.html">add a topic</a>?</p>
-</body>
-</html>
+<table>
+        <thead>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Create time</th>
+            <th>Owner</th>
+
+        </thead>
+        
+<?php
+    if($result){
+      while($i= $result->fetch_assoc()){
+        // echo $i['topic_title'];
+        ?>
+            <tbody>
+            <td><?php echo $i['topic_id']?></td>
+            <td><?php echo $i['topic_title']?></td>
+            <td><?php echo $i['topic_create_time']?></td>
+            <td><?php echo $i['topic_owner']?></td>
+            </tbody>
+
+
+        
+     <?php }
+    ?>
+    
+
+</table>
+<?php    
+
+}
+    else{
+      echo "No topic Exist";
+    }
+?>
+
+   
+  

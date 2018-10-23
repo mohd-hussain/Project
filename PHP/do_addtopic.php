@@ -32,7 +32,7 @@
             $topic_id = mysqli_insert_id($conn);
             
             //create and issue the second query
-            $add_post = "insert into forum_posts (topic_id,post_text,post_create_time,post_owner) values ('$topic_id','$_post_text', 
+            $add_post = "insert into forum_posts (topic_id,post_text,post_create_time,post_owner) values ('$topic_id','$post_text', 
             now(), '$topic_owner')";
             $result2=mysqli_query($conn,$add_post); 
             if(!$result2){
